@@ -16,15 +16,15 @@
               <ApplicationLogo class="hidden h-9 w-auto lg:block"/>
             </div>
             <div class="flex flex-1 hidden sm:ml-6 sm:block">
-              <div class="flex justify-end space-x-12">
+              <div class="flex justify-end lg:space-x-12">
                 <template  v-for="item in navigation">
-                    <Link v-if="item.name == 'SIGN UP'" :key="item.name" :href="item.href" :class="[item.current ? 'text-white' : 'text-white hover:bg-red-800 hover:text-white', 'bg-red-600 px-3 py-2 text-md font-bold']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</Link>
+                    <Link v-if="item.name == 'SIGN UP'" :key="item.name" :href="item.href" :class="[item.current ? 'text-white' : 'text-white hover:bg-red-800 hover:text-white', 'bg-red-600 px-3 py-2 text-md font-bold whitespace-nowrap']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</Link>
                     <Menu v-else-if="item.name == 'PRODUCTS'" as="div" class="relative inline-block text-left">
-                        <MenuButton :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'flex px-3 py-2 text-md font-bold']">
+                        <MenuButton @click="navMenu = !navMenu" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'flex px-3 py-2 text-md font-bold']">
                             PRODUCTS<ChevronDownIcon class="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                         </MenuButton>
                         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                            <MenuItems class="absolute right-0 z-10 mt-2 w-72 p-4 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <MenuItems v-show="navMenu" class="absolute right-0 z-10 mt-2 w-72 p-4 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div class="py-1">
                                     <h3 class="font-bold"><font-awesome-icon icon="fa-solid fa-football" class="text-brown-400"/> <span class="ml-2">FIRSTDOWN PLAYBOOK</span></h3>
                                     <div class="pl-4 menu-items">
@@ -61,7 +61,7 @@
                             </MenuItems>
                         </transition>
                     </Menu>
-                    <Link v-else :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 text-md font-bold']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</Link>
+                    <Link v-else :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 text-md font-bold whitespace-nowrap']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</Link>
                 </template>
               </div>
             </div>
@@ -100,7 +100,11 @@
 
       <DisclosurePanel class="sm:hidden">
         <div class="space-y-1 px-2 pt-2 pb-3">
-          <DisclosureButton v-for="item in navigation" :key="item.name" as="a" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</DisclosureButton>
+            <template v-for="item in navigation">
+                <Link :href="item.href">
+                    <DisclosureButton :key="item.name" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</DisclosureButton>
+                </Link>
+            </template>
         </div>
       </DisclosurePanel>
     </Disclosure>
@@ -108,23 +112,37 @@
 
   <script setup>
     import ApplicationLogo from '@/Components/ApplicationLogo.vue'
-    import { onMounted, onUpdated } from 'vue'
+    import { ref, onMounted } from 'vue'
     import { usePage } from '@inertiajs/vue3'
     import { Link } from '@inertiajs/vue3'
     import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
     import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
     import { ChevronDownIcon } from '@heroicons/vue/20/solid'
     import { router } from '@inertiajs/vue3'
-    let interest = usePage().props.interest;
+
+    let navMenu = ref(false);
+    let interest = ref(usePage().props.interest);
     function checkInterest() {
         interest = usePage().props.interest;
         let el = document.getElementById(interest);
-        console.log(interest)
         if(interest){
             document.getElementById(interest).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
         }
     }
+    function keyCheck(event){
+        console.log(event)
+        // if(event.key == 'Escape'){
+        //   navMenu = false;
+        // }
+    }
+    function onClose(){
+        navMenu = false;
+    }
+
+    document.addEventListener('keydown', keyCheck())
+
     onMounted(() => {
+
         setTimeout(function(){
             checkInterest();
         }, 500)

@@ -1,7 +1,7 @@
 <script setup>
 </script>
 <template>
-    <div class="bg-black text-center text-white space-y-6  py-10">
+    <div class="bg-black text-center text-white space-y-6 py-10 px-10">
         <div class="text-xl">Connect with us</div>
         <div class="max-w-sm m-auto space-y-6">
             <div class="flex justify-around text-2xl">

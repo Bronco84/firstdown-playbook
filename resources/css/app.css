@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.page-enter-active, .page-leave-active {
+    transition: opacity .15s ease;
+  }
+
+  .page-enter-from, .page-leave-to {
+    opacity: 0;
+  }
+
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .chakra{
+        font-family: 'Chakra Petch', sans-serif;;
+    }

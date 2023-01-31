@@ -5,7 +5,7 @@ I decided to recreate the front-end of the Firstdown Playbook Website for a few 
 
 1. I wanted to demonstrate that I would be a serious, dedicated employee of Firstdown Playbook if given the opportunity.
 
-2. I wanted to become more familiar with the company and the product.
+2. I wanted to become more familiar with the website, company, and the product.
 
 3. Building the front-facing site from scratch better demonstrates my familiarity with composer, Laravel, and git, along with a few other newer technologies. 
 

@@ -6,7 +6,7 @@
 
 <template>
     <section>
-        <Head title="Free-Trial" />
+        <Head title="Pricing" />
         <div class="background-image grid w-full text-white h-48 text-center place-items-center">
             <div>
                 <h1 class="text-5xl font-bold chakra" >Welcome to FirstDown PlayBook™!</h1>

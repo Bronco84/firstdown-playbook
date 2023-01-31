@@ -108,7 +108,7 @@
 
   <script setup>
     import ApplicationLogo from '@/Components/ApplicationLogo.vue'
-    import { onMounted } from 'vue'
+    import { onMounted, onUpdated } from 'vue'
     import { usePage } from '@inertiajs/vue3'
     import { Link } from '@inertiajs/vue3'
     import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
@@ -125,8 +125,15 @@
         }
     }
     onMounted(() => {
-        checkInterest();
+        setTimeout(function(){
+            checkInterest();
+        }, 500)
+
     });
+
+    // onUpdated(() => {
+    //     checkInterest();
+    // });
 
     router.on('finish', (event) => {
         checkInterest();

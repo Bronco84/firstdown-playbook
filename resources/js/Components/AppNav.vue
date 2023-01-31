@@ -2,7 +2,7 @@
     <Disclosure as="nav" class="bg-black z-20" v-slot="{ open }">
       <div class="4xl:mx-auto 4xl:max-w-7xl px-2 sm:px-8">
         <div class="relative flex items-center justify-between" style="height:73px">
-          <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+          <div class="absolute inset-y-0 right-0 flex items-center md:hidden">
             <!-- Mobile menu button-->
             <DisclosureButton class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span class="sr-only">Open main menu</span>
@@ -15,16 +15,16 @@
               <ApplicationLogo class="block h-9 w-auto lg:hidden"/>
               <ApplicationLogo class="hidden h-9 w-auto lg:block"/>
             </div>
-            <div class="flex flex-1 hidden sm:ml-6 sm:block">
+            <div class="flex flex-1 hidden md:ml-6 md:block">
               <div class="flex justify-end lg:space-x-12">
                 <template  v-for="item in navigation">
                     <Link v-if="item.name == 'SIGN UP'" :key="item.name" :href="item.href" :class="[item.current ? 'text-white' : 'text-white hover:bg-red-800 hover:text-white', 'bg-red-600 px-3 py-2 text-md font-bold whitespace-nowrap']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</Link>
                     <Menu v-else-if="item.name == 'PRODUCTS'" as="div" class="relative inline-block text-left">
-                        <MenuButton @click="navMenu = !navMenu" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'flex px-3 py-2 text-md font-bold']">
+                        <MenuButton :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'flex px-3 py-2 text-md font-bold']">
                             PRODUCTS<ChevronDownIcon class="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                         </MenuButton>
                         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                            <MenuItems v-show="navMenu" class="absolute right-0 z-10 mt-2 w-72 p-4 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <MenuItems class="absolute right-0 z-10 mt-2 w-72 p-4 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div class="py-1">
                                     <h3 class="font-bold"><font-awesome-icon icon="fa-solid fa-football" class="text-brown-400"/> <span class="ml-2">FIRSTDOWN PLAYBOOK</span></h3>
                                     <div class="pl-4 menu-items">
@@ -112,35 +112,22 @@
 
   <script setup>
     import ApplicationLogo from '@/Components/ApplicationLogo.vue'
-    import { ref, onMounted } from 'vue'
+    import { onMounted, onUpdated } from 'vue'
     import { usePage } from '@inertiajs/vue3'
     import { Link } from '@inertiajs/vue3'
     import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
     import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
     import { ChevronDownIcon } from '@heroicons/vue/20/solid'
     import { router } from '@inertiajs/vue3'
-
-    let navMenu = ref(false);
-    let interest = ref(usePage().props.interest);
+    let interest = usePage().props.interest;
     function checkInterest() {
         interest = usePage().props.interest;
         let el = document.getElementById(interest);
+        console.log(interest)
         if(interest){
             document.getElementById(interest).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
         }
     }
-    function keyCheck(event){
-        console.log(event)
-        // if(event.key == 'Escape'){
-        //   navMenu = false;
-        // }
-    }
-    function onClose(){
-        navMenu = false;
-    }
-
-    document.addEventListener('keydown', keyCheck())
-
     onMounted(() => {
 
         setTimeout(function(){

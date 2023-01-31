@@ -8,10 +8,9 @@ import { Link } from '@inertiajs/vue3';
         <AppNav/>
 
         <div class="grid h-screen">
-            <slot />
-                <!-- <transition name="page" appear mode="out-in">
+                <transition name="page" appear mode="out-in">
                     <slot />
-                </transition> -->
+                </transition>
         </div>
     </div>
 </template>

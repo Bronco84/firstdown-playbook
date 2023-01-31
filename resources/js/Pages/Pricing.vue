@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product-card">
+                    <div class="product-card md:space-y-10">
                         <product-card id="flag_football">
                             <template #title>Flag Football Membership  <font-awesome-icon class="hidden md:inline-block text-yellow-500 ml-5" icon="fa-solid fa-flag" /></template>
                             <template #users>Single User</template>

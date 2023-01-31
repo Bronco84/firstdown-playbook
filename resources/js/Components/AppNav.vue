@@ -97,7 +97,7 @@
           </div>
         </div>
       </div>
-
+      <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
       <DisclosurePanel class="sm:hidden">
         <div class="space-y-1 px-2 pt-2 pb-3">
             <template v-for="item in navigation">
@@ -107,52 +107,65 @@
             </template>
         </div>
       </DisclosurePanel>
+      </transition>
     </Disclosure>
   </template>
 
-  <script setup>
-    import ApplicationLogo from '@/Components/ApplicationLogo.vue'
-    import { onMounted, onUpdated } from 'vue'
-    import { usePage } from '@inertiajs/vue3'
-    import { Link } from '@inertiajs/vue3'
-    import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-    import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-    import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-    import { router } from '@inertiajs/vue3'
-    let interest = usePage().props.interest;
-    function checkInterest() {
-        interest = usePage().props.interest;
-        let el = document.getElementById(interest);
-        console.log(interest)
-        if(interest){
-            document.getElementById(interest).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
-        }
+<script setup>
+import ApplicationLogo from '@/Components/ApplicationLogo.vue'
+import { ref, onMounted } from 'vue'
+import { usePage } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3'
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import { router } from '@inertiajs/vue3'
+
+let navMenu = ref(false);
+let interest = ref(usePage().props.interest);
+function checkInterest() {
+    interest = usePage().props.interest;
+    let el = document.getElementById(interest);
+    if(interest){
+        document.getElementById(interest).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
-    onMounted(() => {
+}
+function keyCheck(event){
+    console.log(event)
+    // if(event.key == 'Escape'){
+    //   navMenu = false;
+    // }
+}
+function onClose(){
+    navMenu = false;
+}
 
-        setTimeout(function(){
-            checkInterest();
-        }, 500)
+document.addEventListener('keydown', keyCheck())
 
-    });
+onMounted(() => {
 
-    // onUpdated(() => {
-    //     checkInterest();
-    // });
-
-    router.on('finish', (event) => {
+    setTimeout(function(){
         checkInterest();
-    });
+    }, 500)
 
-    const navigation = [
-        { name: 'FREE TRIAL', href: 'register', current: false },
-        { name: 'PRODUCTS', href: 'products', current: false },
-        { name: 'PRICING', href: 'pricing', current: false },
-        { name: 'LOGIN', href: 'login', current: false },
-        { name: 'SIGN UP', href: 'register', current: false },
-    ]
-  </script>
+});
 
+// onUpdated(() => {
+//     checkInterest();
+// });
+
+router.on('finish', (event) => {
+    checkInterest();
+});
+
+const navigation = [
+    { name: 'FREE TRIAL', href: 'register', current: false },
+    { name: 'PRODUCTS', href: 'products', current: false },
+    { name: 'PRICING', href: 'pricing', current: false },
+    { name: 'LOGIN', href: 'login', current: false },
+    { name: 'SIGN UP', href: 'register', current: false },
+]
+</script>
   <style>
     .menu-items a{
         font-weight: bold!important;

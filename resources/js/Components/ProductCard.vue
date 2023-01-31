@@ -13,7 +13,7 @@
                 <div class="md:flex-grow p-10">
                     <slot name="leftbody"></slot>
                 </div>
-                <div class="md:w-1/4 bg-gray-300 p-10">
+                <div class="w-full md:w-96 lg:w-1/4 bg-gray-300 p-10 whitespace-nowrap">
                     <slot name="rightbody"></slot>
                 </div>
             </div>

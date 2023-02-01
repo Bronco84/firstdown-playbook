@@ -27,7 +27,7 @@ const submit = () => {
         <div class="md:absolute side-image top-0 bottom-0 left-0 right-0 z-10">
         </div>
 
-        <div class="md:fixed md:z-10 md:w-1/2 w-full h-screen md:p-20 p-5 bg-white  md:right-0 overflow-auto">
+        <div class="md:fixed md:z-10 md:w-1/2 w-full h-screen md:p-20 p-5 bg-white  md:right-0 md:overflow-auto">
             <div class="text-center mb-10">
                 <div class="text-xl">FirstDown PlayBook™ Free Trial</div>
                 <div class="mb-6 text-red-600">No Credit Card Needed!</div>

@@ -47,11 +47,11 @@ defineProps({
             </div>
         </div>
         <div class="z-10 bg-black w-full mt-24 pt-4">
-            <div class="max-w-5xl mx-auto text-white flex space-x-24">
-                <div class="">
-                <img src="https://playbook-tech-assets.s3.amazonaws.com/firstdown/marketing/landing-pages/homepage/coach-singletary-crossed-arms.webp" width="288" height="320" alt="Mike Singletary, Hall of Famer and NFL Coach" title="Mike Singletary, Hall of Famer and NFL Coach"/>
+            <div class="max-w-5xl mx-auto text-white flex md:space-x-24 p-12 md:p-0">
+                <div class="hidden md:block">
+                    <img src="https://playbook-tech-assets.s3.amazonaws.com/firstdown/marketing/landing-pages/homepage/coach-singletary-crossed-arms.webp" width="288" height="320" alt="Mike Singletary, Hall of Famer and NFL Coach" title="Mike Singletary, Hall of Famer and NFL Coach"/>
                 </div>
-                <div class="flex-1 font-bold pt-8">
+                <div class="md:flex-1 font-bold pt-8">
                     <div class="text-3xl italic mb-5"><span class="text-red-700">"</span>FirstDown PlayBook™ changes how coaches teach the game of football. No more drawing plays and cards. This tool enhances your player's learning curve and does it in a fraction of the time.<span class="text-red-700">"</span></div>
                     <div class="text-2xl text-center">Mike Singletary, <i>Hall of Famer and NFL Coach</i></div>
                 </div>
@@ -60,13 +60,13 @@ defineProps({
 
     </div>
     <div class="bg-gray-800 flex items-center">
-        <div class="text-3xl text-white p-6 mx-auto font-bold">The Most Comprehensive Digital Football PlayBook Toolkit</div>
+        <div class="text-3xl text-white p-6 mx-auto font-bold text-center">The Most Comprehensive Digital Football PlayBook Toolkit</div>
     </div>
-    <div class="grid grid-rows-1 grid-flow-col gap-10 max-w-5xl m-auto p-10">
+    <div class="md:grid grid-rows-1 grid-flow-col gap-10 max-w-5xl m-auto p-10">
         <div class="">
             <div class="text-3xl font-bold mb-4 text-red-600">Football Plays Drawn by NFL Coaches</div>
             <div>
-                <ul class="list-disc marker:text-red-400 space-y-4">
+                <ul class="list-disc marker:text-red-400 space-y-4 mb-10 md:mb-0">
                     <li>35,000+ pre-drawn football plays for every level</li>
                     <li>Youth football playbooks, high school football playbooks, college football playbooks, flag football playbooks, and more!</li>
                     <li>Youth football plays, high school football plays, and flag football plays drawn up vs multiple looks</li>
@@ -81,11 +81,11 @@ defineProps({
         </div>
     </div>
     <div><hr/></div>
-    <div class="grid grid-rows-1 grid-flow-col gap-10 max-w-5xl m-auto p-10">
+    <div class="md:grid grid-rows-1 grid-flow-col gap-10 max-w-5xl m-auto p-10">
         <div class="">
             <div class="text-3xl font-bold mb-4 text-red-600">Football Coaching Tools to Give Your Team the Winning Edge</div>
             <div>
-                <ul class="list-disc marker:text-red-400 space-y-4">
+                <ul class="list-disc marker:text-red-400 space-y-4 mb-10 md:mb-0">
                     <li>Create custom, quality football playbooks in seconds.</li>
                     <li>Create colorful, professional-looking play cards using our simple but powerful football play drawing software</li>
                     <li>Save portions of plays as Football Play Templates (also known as stencils) and re-use them as many times as you want</li>
@@ -101,11 +101,11 @@ defineProps({
         </div>
     </div>
     <div><hr/></div>
-    <div class="grid grid-rows-1 grid-flow-col gap-10 max-w-5xl m-auto p-10">
+    <div class="md:grid grid-rows-1 grid-flow-col gap-10 max-w-5xl m-auto p-10">
         <div class="">
             <div class="text-3xl font-bold mb-4 text-red-600">The Best Football Play Drawing Software on the Market</div>
             <div>
-                <ul class="list-disc marker:text-red-400 space-y-4">
+                <ul class="list-disc marker:text-red-400 space-y-4 mb-10 md:mb-0">
                     <li>Our simple but powerful football play editor was built by football coaches, for football coaches.</li>
                     <li>Quickly and easily add players, straight lines, curved lines, symbols, colors, text, and videos to your football plays</li>
                     <li>Use the Lineman View feature to save and draw football plays while zoomed in up to 250% (this is especially useful for Flag Football wristband sheets!)</li>

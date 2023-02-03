@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="https://playbook-tech-assets.s3.amazonaws.com/firstdown/favicon.ico">
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 

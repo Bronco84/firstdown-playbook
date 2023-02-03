@@ -19,28 +19,28 @@
                 <template  v-for="item in navigation">
                     <Link v-if="item.name == 'SIGN UP'" :key="item.name" :href="item.href" :class="[item.current ? 'text-white' : 'text-white hover:bg-red-800 hover:text-white', 'bg-red-600 px-3 py-2 text-md font-bold whitespace-nowrap']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</Link>
                     <Menu v-else-if="item.name == 'PRODUCTS'" as="div" class="relative inline-block text-left">
-                        <MenuButton @click="navMenu = true" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'flex px-3 py-2 text-md font-bold']">
+                        <MenuButton :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'flex px-3 py-2 text-md font-bold']">
                             PRODUCTS<ChevronDownIcon class="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                         </MenuButton>
                         <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                            <MenuItems v-if="navMenu" @click="navMenu = false" class="absolute right-0 z-10 mt-2 w-72 p-4 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <MenuItems class="absolute right-0 z-10 mt-2 w-72 p-4 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <div class="py-1">
                                     <h3 class="font-bold"><font-awesome-icon icon="fa-solid fa-football" class="text-brown-400"/> <span class="ml-2">FIRSTDOWN PLAYBOOK</span></h3>
                                     <div class="pl-4 menu-items">
-                                        <MenuItem v-slot="{ active }">
-                                            <Link href="/pricing?interest=flag_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Flag Football (Single User)</Link>
+                                        <MenuItem v-slot="{ active, close }">
+                                            <Link @click="close" href="/pricing?interest=flag_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Flag Football (Single User)</Link>
                                         </MenuItem>
-                                        <MenuItem v-slot="{ active }">
-                                            <Link href="/pricing?interest=7v7_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">7 on 7 Passing (Single User)</Link>
+                                        <MenuItem v-slot="{ active, close }">
+                                            <Link @click="close" href="/pricing?interest=7v7_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">7 on 7 Passing (Single User)</Link>
                                         </MenuItem>
-                                        <MenuItem v-slot="{ active }">
-                                            <Link href="/pricing?interest=tackle_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Tackle Football (Single User)</Link>
+                                        <MenuItem v-slot="{ active, close }">
+                                            <Link @click="close" href="/pricing?interest=tackle_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Tackle Football (Single User)</Link>
                                         </MenuItem>
-                                        <MenuItem v-slot="{ active }">
-                                            <Link href="/pricing?interest=all_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">ALL Football (Single User)</Link>
+                                        <MenuItem v-slot="{ active, close }">
+                                            <Link @click="close" href="/pricing?interest=all_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">ALL Football (Single User)</Link>
                                         </MenuItem>
-                                        <MenuItem v-slot="{ active }">
-                                            <Link href="/pricing?interest=full_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">ALL Football (Full Team)</Link>
+                                        <MenuItem v-slot="{ active, close }">
+                                            <Link @click="close" href="/pricing?interest=full_football" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">ALL Football (Full Team)</Link>
                                         </MenuItem>
                                     </div>
                                 </div>
